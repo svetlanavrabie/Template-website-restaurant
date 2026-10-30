@@ -1,58 +1,505 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <title>Restaurant</title>
-  
-  
-  
-      <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laura's Restaurant — A New York City Eatery</title>
+  <meta name="description" content="Laura's Restaurant is a New York City eatery. Explore our three-course food menu — garden greens, slow-savoured meats and a sweet finish.">
+  <meta name="theme-color" content="#171717">
+  <meta name="color-scheme" content="dark">
 
-  
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Laura's Restaurant">
+  <meta property="og:title" content="Laura's Restaurant — A New York City Eatery">
+  <meta property="og:description" content="Garden greens, slow-savoured meats and a sweet finish at Laura's Restaurant, a New York City eatery.">
+  <meta property="og:image" content="assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Warmly lit dining room with wooden tables set for dinner">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp"
+    imagesrcset="assets/images/hero/hero-dining-room-portrait-600.webp 600w, assets/images/hero/hero-dining-room-portrait-900.webp 900w, assets/images/hero/hero-dining-room-portrait-1200.webp 1200w"
+    imagesizes="100vw" media="(max-width: 47.99em) and (orientation: portrait)">
+  <link rel="preload" as="image" type="image/webp"
+    imagesrcset="assets/images/hero/hero-dining-room-960.webp 960w, assets/images/hero/hero-dining-room-1600.webp 1600w, assets/images/hero/hero-dining-room-2400.webp 2400w"
+    imagesizes="100vw" media="(min-width: 48em), (orientation: landscape)">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/index.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Laura's Restaurant",
+    "description": "A New York City eatery.",
+    "image": "assets/images/og-image.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "New York City",
+      "addressRegion": "NY",
+      "addressCountry": "US"
+    },
+    "hasMenu": {
+      "@type": "Menu",
+      "name": "Food Menu",
+      "hasMenuSection": [
+        {
+          "@type": "MenuSection",
+          "name": "First Course",
+          "hasMenuItem": {
+            "@type": "MenuItem",
+            "name": "Welsh Onion Soko",
+            "offers": { "@type": "Offer", "price": "14", "priceCurrency": "USD" }
+          }
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Second Course",
+          "hasMenuItem": {
+            "@type": "MenuItem",
+            "name": "Pastrami Boudin Tongue",
+            "offers": { "@type": "Offer", "price": "22", "priceCurrency": "USD" }
+          }
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Dessert",
+          "hasMenuItem": {
+            "@type": "MenuItem",
+            "name": "Fruitcake Marzipan Pudding Dragée",
+            "offers": { "@type": "Offer", "price": "8", "priceCurrency": "USD" }
+          }
+        }
+      ]
+    }
+  }
+  </script>
 </head>
 
 <body>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5Z"/></symbol>
+    <symbol id="i-cake" viewBox="0 0 24 24"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v3M12 8v3M17 8v3"/><path d="M7 4h.01M12 4h.01M17 4h.01"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  </svg>
 
-  
-<h1>esha's restaurant</h1>
-<h2>a New York City eatery</h2>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- main menu -->
-<nav class='menu'>
-  <div class="main-menu">
-    <ul>
-      <li><a class="active" href="#">Home</a></li>
-      <li><a href="#">Service</a></li>
-      <li><a href="#">Food Menu</a></li>
-      <li><a href="#">Contact us</a></li>
-    </ul>
-  </div>
-</nav>
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="brand" href="#home" aria-label="Laura's Restaurant — back to top">
+        <span class="brand__name">Laura's</span>
+        <span class="brand__tag">Restaurant</span>
+      </a>
 
-<div class="first">
-  <p>welsh onion soko <span class="price">$14</span><br />
-  <small>Mustard sierra leone bologi kale chard beet greens black-eyed pea sorrel amaranth garlic tigernut spring onion summer purslane asparagus lentil. </small></p>
-</div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span class="visually-hidden" data-nav-toggle-label>Open menu</span>
+      </button>
 
-<div class="second">
-  <p>pastrami boudin tongue <span class="price">$22</span><br />
-  <small>Tri-tip capicola kielbasa salami brisket chicken rump strip steak drumstick. Meatloaf chuck boudin ribeye pork jowl. Andouille bacon jowl meatloaf pork loin prosciutto bresaola.</small></p>
-</div>
-  
-<div class="dessert">
-  <p>fruitcake marzipan pudding dragee <span class="price">$8</span><br />
-  <small>Lollipop tart cotton candy jelly-o carrot cake apple pie cupcake. Jelly-o bear claw ice cream candy canes.</small></p>
-</div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+      <nav class="site-nav" id="site-nav" aria-label="Main" data-nav>
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#home" data-nav-link>Home</a></li>
+          <li><a class="site-nav__link" href="#about" data-nav-link>About</a></li>
+          <li><a class="site-nav__link" href="#services" data-nav-link>Service</a></li>
+          <li><a class="site-nav__link" href="#menu" data-nav-link>Food Menu</a></li>
+          <li><a class="site-nav__link" href="#reviews" data-nav-link>Reviews</a></li>
+          <li><a class="site-nav__link" href="#contact" data-nav-link>Contact us</a></li>
+        </ul>
+        <p class="site-nav__note" aria-hidden="true">A New York City Eatery</p>
+      </nav>
+    </div>
+  </header>
 
-  
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home" aria-labelledby="hero-title" data-hero>
+      <picture class="hero__media">
+        <source type="image/webp" media="(max-width: 47.99em) and (orientation: portrait)"
+          srcset="assets/images/hero/hero-dining-room-portrait-600.webp 600w, assets/images/hero/hero-dining-room-portrait-900.webp 900w, assets/images/hero/hero-dining-room-portrait-1200.webp 1200w"
+          sizes="100vw">
+        <source type="image/webp"
+          srcset="assets/images/hero/hero-dining-room-960.webp 960w, assets/images/hero/hero-dining-room-1600.webp 1600w, assets/images/hero/hero-dining-room-2400.webp 2400w"
+          sizes="100vw">
+        <img src="assets/images/hero/hero-dining-room-1600.jpg" width="1600" height="1067"
+          alt="Warmly lit dining room with wooden tables and chairs set for dinner" fetchpriority="high" decoding="async">
+      </picture>
 
-    <script  src="js/index.js"></script>
+      <div class="container hero__content">
+        <p class="eyebrow hero__eyebrow animate-in" style="--i: 0">New York City</p>
+        <h1 class="hero__title animate-in" id="hero-title" style="--i: 1">
+          <span class="hero__title-main">Laura's</span>
+          <span class="hero__title-sub">Restaurant</span>
+        </h1>
+        <p class="hero__tagline animate-in" style="--i: 2">A New York City Eatery</p>
+        <div class="hero__actions animate-in" style="--i: 3">
+          <a class="btn btn--primary" href="#menu">
+            Explore Our Menu
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#contact">Contact Us</a>
+        </div>
+      </div>
 
+      <a class="hero__scroll" href="#about">
+        <span>Discover</span>
+        <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+      </a>
+    </section>
 
+    <!-- ================= ABOUT ================= -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container about__grid">
+        <div class="about__media reveal">
+          <figure class="about__figure about__figure--main">
+            <picture>
+              <source type="image/webp"
+                srcset="assets/images/restaurant/chef-at-work-480.webp 480w, assets/images/restaurant/chef-at-work-800.webp 800w, assets/images/restaurant/chef-at-work-1200.webp 1200w"
+                sizes="(min-width: 62em) 34vw, (min-width: 36em) 70vw, 86vw">
+              <img src="assets/images/restaurant/chef-at-work-800.jpg" width="800" height="1000" loading="lazy" decoding="async"
+                alt="Chef in an apron working at the stove in a dimly lit kitchen">
+            </picture>
+          </figure>
+          <figure class="about__figure about__figure--accent">
+            <picture>
+              <source type="image/webp"
+                srcset="assets/images/restaurant/table-wine-setting-400.webp 400w, assets/images/restaurant/table-wine-setting-640.webp 640w"
+                sizes="(min-width: 62em) 16vw, 40vw">
+              <img src="assets/images/restaurant/table-wine-setting-640.jpg" width="640" height="800" loading="lazy" decoding="async"
+                alt="Dinner table set with wine glasses in front of a wall of wine bottles">
+            </picture>
+          </figure>
+          <p class="about__badge" aria-hidden="true"><span>NYC</span>Eatery</p>
+        </div>
 
+        <div class="about__content">
+          <div class="section-heading section-heading--start reveal">
+            <p class="eyebrow">About Us</p>
+            <h2 class="section-heading__title" id="about-title">A New York City eatery with a <em>warm</em> table</h2>
+          </div>
+          <p class="lead reveal" style="--i: 1">
+            Laura's Restaurant brings an unhurried, welcoming dining room to the pace of New York City —
+            a place to slow down, share a table and enjoy every course.
+          </p>
+          <p class="reveal" style="--i: 2">
+            Our menu moves through three courses: a garden-bright first course of greens and vegetables,
+            a hearty second course of slow-savoured meats, and a sweet finish to end the evening.
+          </p>
+          <ol class="course-list reveal" style="--i: 3" aria-label="Our three courses">
+            <li><span class="course-list__num" aria-hidden="true">01</span>First Course</li>
+            <li><span class="course-list__num" aria-hidden="true">02</span>Second Course</li>
+            <li><span class="course-list__num" aria-hidden="true">03</span>Dessert</li>
+          </ol>
+          <a class="link-arrow reveal" style="--i: 4" href="#menu">
+            See the full menu
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
 
+    <!-- ================= SERVICES ================= -->
+    <section class="section section--alt services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Our Service</p>
+          <h2 class="section-heading__title" id="services-title">Everything we bring <em>to the table</em></h2>
+          <p class="section-heading__lead">From the first plate to the last bite, every course is part of one complete dining experience.</p>
+        </div>
+
+        <div class="services__grid">
+          <figure class="services__media reveal">
+            <picture>
+              <source type="image/webp"
+                srcset="assets/images/restaurant/chef-plating-sauce-480.webp 480w, assets/images/restaurant/chef-plating-sauce-800.webp 800w, assets/images/restaurant/chef-plating-sauce-1200.webp 1200w"
+                sizes="(min-width: 62em) 38vw, (min-width: 36em) 80vw, 92vw">
+              <img src="assets/images/restaurant/chef-plating-sauce-800.jpg" width="800" height="1000" loading="lazy" decoding="async"
+                alt="Chef spooning sauce over a plated dish on a dark counter">
+            </picture>
+          </figure>
+
+          <ul class="services__list" role="list">
+            <li class="service-card reveal" style="--i: 0">
+              <span class="service-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-utensils"/></svg></span>
+              <h3 class="service-card__title">Dine In</h3>
+              <p class="service-card__text">Take a seat in our New York City dining room and enjoy the menu course by course.</p>
+              <a class="service-card__link" href="#contact">Get in touch <span class="visually-hidden">about dining in</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            </li>
+            <li class="service-card reveal" style="--i: 1">
+              <span class="service-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-leaf"/></svg></span>
+              <h3 class="service-card__title">Garden Greens</h3>
+              <p class="service-card__text">A first course built on kale, chard, beet greens, sorrel, amaranth and spring onion.</p>
+              <a class="service-card__link" href="#dish-first-course">View the first course<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            </li>
+            <li class="service-card reveal" style="--i: 2">
+              <span class="service-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-flame"/></svg></span>
+              <h3 class="service-card__title">Meats &amp; Charcuterie</h3>
+              <p class="service-card__text">A second course of tri-tip, brisket, ribeye, capicola and other cured and roasted cuts.</p>
+              <a class="service-card__link" href="#dish-second-course">View the second course<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            </li>
+            <li class="service-card reveal" style="--i: 3">
+              <span class="service-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-cake"/></svg></span>
+              <h3 class="service-card__title">Sweet Finishes</h3>
+              <p class="service-card__text">Dessert to close the meal — tart, carrot cake, apple pie and cupcake notes.</p>
+              <a class="service-card__link" href="#dish-dessert">View the dessert<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOD MENU ================= -->
+    <section class="section menu" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Food Menu</p>
+          <h2 class="section-heading__title" id="menu-title">Three courses, <em>one table</em></h2>
+          <p class="section-heading__lead">A short menu, carefully composed — from the garden, to the grill, to something sweet.</p>
+        </div>
+
+        <div class="menu__grid">
+          <article class="dish-card reveal" id="dish-first-course" style="--i: 0" aria-labelledby="dish-first-title">
+            <div class="dish-card__media">
+              <picture>
+                <source type="image/webp"
+                  srcset="assets/images/menu/first-course-beetroot-480.webp 480w, assets/images/menu/first-course-beetroot-800.webp 800w, assets/images/menu/first-course-beetroot-1200.webp 1200w"
+                  sizes="(min-width: 75em) 380px, (min-width: 62em) 30vw, (min-width: 37.5em) 42vw, 92vw">
+                <img src="assets/images/menu/first-course-beetroot-800.jpg" width="800" height="600" loading="lazy" decoding="async"
+                  alt="Roasted beetroot with greens and herbs served over a creamy dressing">
+              </picture>
+              <span class="dish-card__course">First Course</span>
+            </div>
+            <div class="dish-card__body">
+              <div class="dish-card__header">
+                <h3 class="dish-card__title" id="dish-first-title">Welsh Onion Soko</h3>
+                <p class="dish-card__price"><span class="visually-hidden">Price: </span>$14</p>
+              </div>
+              <p class="dish-card__desc">Mustard sierra leone bologi kale chard beet greens black-eyed pea sorrel amaranth garlic tigernut spring onion summer purslane asparagus lentil.</p>
+            </div>
+          </article>
+
+          <article class="dish-card reveal" id="dish-second-course" style="--i: 1" aria-labelledby="dish-second-title">
+            <div class="dish-card__media">
+              <picture>
+                <source type="image/webp"
+                  srcset="assets/images/menu/second-course-sliced-steak-480.webp 480w, assets/images/menu/second-course-sliced-steak-800.webp 800w, assets/images/menu/second-course-sliced-steak-1200.webp 1200w"
+                  sizes="(min-width: 75em) 380px, (min-width: 62em) 30vw, (min-width: 37.5em) 42vw, 92vw">
+                <img src="assets/images/menu/second-course-sliced-steak-800.jpg" width="800" height="600" loading="lazy" decoding="async"
+                  alt="Sliced grilled steak with asparagus and carrots on a cast-iron platter">
+              </picture>
+              <span class="dish-card__course">Second Course</span>
+            </div>
+            <div class="dish-card__body">
+              <div class="dish-card__header">
+                <h3 class="dish-card__title" id="dish-second-title">Pastrami Boudin Tongue</h3>
+                <p class="dish-card__price"><span class="visually-hidden">Price: </span>$22</p>
+              </div>
+              <p class="dish-card__desc">Tri-tip capicola kielbasa salami brisket chicken rump strip steak drumstick. Meatloaf chuck boudin ribeye pork jowl. Andouille bacon jowl meatloaf pork loin prosciutto bresaola.</p>
+            </div>
+          </article>
+
+          <article class="dish-card reveal" id="dish-dessert" style="--i: 2" aria-labelledby="dish-dessert-title">
+            <div class="dish-card__media">
+              <picture>
+                <source type="image/webp"
+                  srcset="assets/images/menu/dessert-chocolate-cake-480.webp 480w, assets/images/menu/dessert-chocolate-cake-800.webp 800w, assets/images/menu/dessert-chocolate-cake-1200.webp 1200w"
+                  sizes="(min-width: 75em) 380px, (min-width: 62em) 30vw, (min-width: 37.5em) 42vw, 92vw">
+                <img src="assets/images/menu/dessert-chocolate-cake-800.jpg" width="800" height="600" loading="lazy" decoding="async"
+                  alt="Chocolate bundt cake glazed with a stream of melted chocolate">
+              </picture>
+              <span class="dish-card__course">Dessert</span>
+            </div>
+            <div class="dish-card__body">
+              <div class="dish-card__header">
+                <h3 class="dish-card__title" id="dish-dessert-title">Fruitcake Marzipan Pudding Dragée</h3>
+                <p class="dish-card__price"><span class="visually-hidden">Price: </span>$8</p>
+              </div>
+              <p class="dish-card__desc">Lollipop tart cotton candy jelly-o carrot cake apple pie cupcake. Jelly-o bear claw ice cream candy canes.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS =================
+         PLACEHOLDER CONTENT: these cards are NOT real customer reviews.
+         Replace each card's quote, name and initials with genuine guest
+         feedback (with the guest's permission), then remove the
+         "testimonials__notice" paragraph and the "testimonial--placeholder" class. -->
+    <section class="section section--alt testimonials" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Reviews</p>
+          <h2 class="section-heading__title" id="reviews-title">What Our Customers <em>Say</em></h2>
+          <p class="section-heading__lead">Discover what makes the dining experience special.</p>
+          <p class="testimonials__notice">
+            <span class="tag">Placeholder</span>
+            Sample layout only — genuine guest reviews will be published here.
+          </p>
+        </div>
+
+        <ul class="testimonials__grid" role="list">
+          <li class="testimonial testimonial--placeholder reveal" style="--i: 0">
+            <figure>
+              <blockquote class="testimonial__quote">
+                <p>Placeholder review. Replace this text with a genuine comment from a guest about their visit to Laura's Restaurant.</p>
+              </blockquote>
+              <figcaption class="testimonial__author">
+                <span class="avatar" aria-hidden="true">G1</span>
+                <span><span class="testimonial__name">Guest Name</span><span class="testimonial__meta">Placeholder</span></span>
+              </figcaption>
+            </figure>
+          </li>
+          <li class="testimonial testimonial--placeholder reveal" style="--i: 1">
+            <figure>
+              <blockquote class="testimonial__quote">
+                <p>Placeholder review. A short quote about a favourite dish from the menu — for example the first course, second course or dessert — belongs here.</p>
+              </blockquote>
+              <figcaption class="testimonial__author">
+                <span class="avatar" aria-hidden="true">G2</span>
+                <span><span class="testimonial__name">Guest Name</span><span class="testimonial__meta">Placeholder</span></span>
+              </figcaption>
+            </figure>
+          </li>
+          <li class="testimonial testimonial--placeholder reveal" style="--i: 2">
+            <figure>
+              <blockquote class="testimonial__quote">
+                <p>Placeholder review. Use this space for genuine feedback about the atmosphere and the service, shared with the guest's permission.</p>
+              </blockquote>
+              <figcaption class="testimonial__author">
+                <span class="avatar" aria-hidden="true">G3</span>
+                <span><span class="testimonial__name">Guest Name</span><span class="testimonial__meta">Placeholder</span></span>
+              </figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT =================
+         Only the city is confirmed. Replace the "To be announced" values with the
+         real address, phone (tel: link), email (mailto: link) and opening hours. -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <picture class="contact__bg" aria-hidden="true">
+        <source type="image/webp"
+          srcset="assets/images/backgrounds/wine-glasses-table-960.webp 960w, assets/images/backgrounds/wine-glasses-table-1920.webp 1920w"
+          sizes="100vw">
+        <img src="assets/images/backgrounds/wine-glasses-table-960.jpg" width="960" height="640" alt="" loading="lazy" decoding="async">
+      </picture>
+
+      <div class="container contact__grid">
+        <div class="contact__intro">
+          <div class="section-heading section-heading--start reveal">
+            <p class="eyebrow">Contact Us</p>
+            <h2 class="section-heading__title" id="contact-title">We look forward to <em>welcoming you</em></h2>
+          </div>
+          <p class="lead reveal" style="--i: 1">Laura's Restaurant is a New York City eatery. Full contact details and opening hours will be listed here.</p>
+          <a class="btn btn--primary reveal" style="--i: 2" href="#menu">
+            Explore Our Menu
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </div>
+
+        <ul class="contact__list" role="list">
+          <li class="contact-item reveal" style="--i: 0">
+            <span class="contact-item__icon" aria-hidden="true"><svg class="icon"><use href="#i-pin"/></svg></span>
+            <div>
+              <h3 class="contact-item__label">Location</h3>
+              <p class="contact-item__value">New York City, NY</p>
+            </div>
+          </li>
+          <li class="contact-item reveal" style="--i: 1">
+            <span class="contact-item__icon" aria-hidden="true"><svg class="icon"><use href="#i-phone"/></svg></span>
+            <div>
+              <h3 class="contact-item__label">Phone</h3>
+              <p class="contact-item__value contact-item__value--pending">To be announced</p>
+            </div>
+          </li>
+          <li class="contact-item reveal" style="--i: 2">
+            <span class="contact-item__icon" aria-hidden="true"><svg class="icon"><use href="#i-mail"/></svg></span>
+            <div>
+              <h3 class="contact-item__label">Email</h3>
+              <p class="contact-item__value contact-item__value--pending">To be announced</p>
+            </div>
+          </li>
+          <li class="contact-item reveal" style="--i: 3">
+            <span class="contact-item__icon" aria-hidden="true"><svg class="icon"><use href="#i-clock"/></svg></span>
+            <div>
+              <h3 class="contact-item__label">Opening Hours</h3>
+              <p class="contact-item__value contact-item__value--pending">To be announced</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="brand brand--footer" href="#home">
+          <span class="brand__name">Laura's</span>
+          <span class="brand__tag">Restaurant</span>
+        </a>
+        <p>A New York City eatery serving three courses — garden greens, slow-savoured meats and a sweet finish.</p>
+      </div>
+
+      <nav class="site-footer__col" aria-labelledby="footer-explore">
+        <h2 class="site-footer__title" id="footer-explore">Explore</h2>
+        <ul role="list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Service</a></li>
+          <li><a href="#menu">Food Menu</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact us</a></li>
+        </ul>
+      </nav>
+
+      <nav class="site-footer__col" aria-labelledby="footer-menu">
+        <h2 class="site-footer__title" id="footer-menu">Menu</h2>
+        <ul role="list">
+          <li><a href="#dish-first-course">First Course</a></li>
+          <li><a href="#dish-second-course">Second Course</a></li>
+          <li><a href="#dish-dessert">Dessert</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__col">
+        <h2 class="site-footer__title">Visit</h2>
+        <p class="site-footer__contact">
+          <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+          New York City, NY
+        </p>
+      </div>
+    </div>
+
+    <div class="container site-footer__bottom">
+      <p>© 2026 Svetlana Vrabie. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <a class="back-to-top" href="#home" data-back-to-top>
+    <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+    <span class="visually-hidden">Back to top</span>
+  </a>
 </body>
 
 </html>

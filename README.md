@@ -3,6 +3,8 @@
 A one-page restaurant website built with semantic **HTML5**, modern **CSS3** and vanilla **JavaScript (ES6+)**.
 It has a dark, premium look, works at any screen size, and is designed to be accessible and fast.
 
+**Live demo:** [Open Laura's Restaurant](https://svetlanavrabie.github.io/Template-website-restaurant/)
+
 There is no build step, no framework and no runtime dependency.
 
 ---
